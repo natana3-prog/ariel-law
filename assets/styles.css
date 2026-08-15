@@ -474,6 +474,13 @@ section { scroll-margin-top: 5rem; }
   color: var(--muted-fg);
   margin: -2.5rem 0 3rem;
 }
+.service-areas {
+  display: inline-block;
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--muted-fg);
+  opacity: 0.85;
+}
 .contact-card {
   background: var(--card);
   border: 1px solid var(--border);

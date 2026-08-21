@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://natana3-prog.github.io/ariel-law/sitemap.xml
+Sitemap: https://arielamarlaw.com/sitemap.xml

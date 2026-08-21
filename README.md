@@ -29,18 +29,36 @@ plain HTML/CSS/JS that any free static host can serve.
 ## Deployed URL
 
 All absolute URLs (canonical, hreflang, Open Graph, JSON-LD, sitemap, robots)
-are set to `https://natana3-prog.github.io/ariel-law`. If the site later moves
-to a custom domain, search-and-replace that base URL everywhere (PowerShell,
-from the project root):
+point at `https://arielamarlaw.com` — the live custom domain.
+
+The domain is registered at Cloudflare Registrar and served by GitHub Pages.
+The `CNAME` file in the repo root is what tells Pages which domain to answer on;
+**do not delete it** — GitHub rewrites it from the repo on every deploy.
+
+Cloudflare DNS records (all must be **DNS only** / grey cloud, not proxied,
+or GitHub cannot issue the TLS certificate):
+
+| Type  | Name  | Value                          |
+|-------|-------|--------------------------------|
+| A     | `@`   | 185.199.108.153                |
+| A     | `@`   | 185.199.109.153                |
+| A     | `@`   | 185.199.110.153                |
+| A     | `@`   | 185.199.111.153                |
+| AAAA  | `@`   | 2606:50c0:8000::153            |
+| AAAA  | `@`   | 2606:50c0:8001::153            |
+| AAAA  | `@`   | 2606:50c0:8002::153            |
+| AAAA  | `@`   | 2606:50c0:8003::153            |
+| CNAME | `www` | natana3-prog.github.io         |
+
+If the domain ever changes again, search-and-replace the base URL everywhere
+(PowerShell, from the project root) and update the `CNAME` file to match:
 
 ```powershell
 Get-ChildItem -Recurse -Include *.html,*.xml,*.txt | ForEach-Object {
-  (Get-Content $_.FullName -Raw) -replace 'https://natana3-prog\.github\.io/ariel-law', 'https://NEW-DOMAIN' |
+  (Get-Content $_.FullName -Raw) -replace 'https://arielamarlaw\.com', 'https://NEW-DOMAIN' |
     Set-Content $_.FullName -Encoding utf8
 }
 ```
-
-Also update the two `/ariel-law/` paths in `404.html` if the repo name changes.
 
 ## Free hosting options
 

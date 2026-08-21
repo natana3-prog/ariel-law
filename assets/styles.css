@@ -118,8 +118,13 @@ section { scroll-margin-top: 5rem; }
 .lang-list {
   position: absolute;
   top: calc(100% + 0.5rem);
-  inset-inline-end: 0;
+  /* Anchor physically right in every language: in RTL the picker sits flush
+     against the right edge, so a logical inline-end anchor pushed the panel
+     off-screen once the mobile breakpoint hid the links beside it. */
+  right: 0;
+  left: auto;
   min-width: 9rem;
+  max-width: calc(100vw - 2rem);
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
